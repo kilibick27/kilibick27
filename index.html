@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>kilibick27</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(135deg, #050b1a 0%, #0f2748 45%, #000000 100%);
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .bg-effects {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.35;
+  }
+
+  .stage {
+    position: relative;
+    z-index: 1;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4vh;
+    padding: 4vh 4vw;
+  }
+
+  .row {
+    display: flex;
+    width: 100%;
+    max-width: 1100px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3vw;
+  }
+
+  .block {
+    flex: 1;
+    height: 22vh;
+    max-height: 220px;
+    min-height: 130px;
+    border-radius: 22px;
+    box-shadow: 0 0 25px rgba(91, 155, 213, 0.35), inset 0 0 20px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .b1 { background: linear-gradient(160deg, #000000 0%, #5b9bd5 100%); }
+  .b2 { background: linear-gradient(160deg, #5b9bd5 0%, #000000 100%); }
+  .b3 { background: linear-gradient(200deg, #000000 0%, #5b9bd5 100%); }
+  .b4 { background: linear-gradient(200deg, #5b9bd5 0%, #000000 100%); }
+  .b5 { background: linear-gradient(160deg, #000000 0%, #5b9bd5 100%); }
+
+  .welcome {
+    flex: 0 0 auto;
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    color: #ffffff;
+    text-shadow: 0 0 15px rgba(91,155,213,0.9), 0 0 35px rgba(91,155,213,0.5);
+    padding: 0 2vw;
+    white-space: nowrap;
+  }
+
+  .row.top .block {
+    flex: 0 0 30%;
+  }
+
+  @media (max-width: 700px) {
+    html, body { overflow: auto; }
+    .stage { height: auto; min-height: 100vh; }
+    .row { flex-direction: column; }
+    .row.top .block { flex: 0 0 auto; width: 100%; }
+    .block { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+  <svg class="bg-effects" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+    <g fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+      <!-- молнии -->
+      <path d="M180 60 L120 220 L165 220 L100 400" transform="rotate(10 150 230)"/>
+      <path d="M1420 100 L1360 260 L1405 260 L1340 440" transform="rotate(-15 1380 270)"/>
+      <path d="M60 620 L10 760 L50 760 L0 900" transform="rotate(8 30 760)"/>
+      <path d="M1500 560 L1450 700 L1495 700 L1440 860" transform="rotate(-8 1470 710)"/>
+      <path d="M780 40 L740 150 L775 150 L730 260" transform="rotate(12 755 150)"/>
+
+      <!-- сердечки -->
+      <path d="M260 480 C260 450 300 450 300 480 C300 450 340 450 340 480 C340 520 300 550 300 570 C300 550 260 520 260 480 Z"/>
+      <path d="M1180 200 C1180 178 1210 178 1210 200 C1210 178 1240 178 1240 200 C1240 230 1210 252 1210 268 C1210 252 1180 230 1180 200 Z"/>
+      <path d="M120 120 C120 102 145 102 145 120 C145 102 170 102 170 120 C170 145 145 163 145 176 C145 163 120 145 120 120 Z"/>
+      <path d="M1300 720 C1300 700 1330 700 1330 720 C1330 700 1360 700 1360 720 C1360 748 1330 772 1330 788 C1330 772 1300 748 1300 720 Z"/>
+      <path d="M700 800 C700 782 725 782 725 800 C725 782 750 782 750 800 C750 823 725 841 725 854 C725 841 700 823 700 800 Z"/>
+    </g>
+  </svg>
+
+  <div class="stage">
+    <div class="row top">
+      <div class="block b1"></div>
+      <div class="welcome">Welcome</div>
+      <div class="block b2"></div>
+    </div>
+    <div class="row bottom">
+      <div class="block b3"></div>
+      <div class="block b4"></div>
+      <div class="block b5"></div>
+    </div>
+  </div>
+
+</body>
+</html>
