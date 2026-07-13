@@ -1,16 +1,18 @@
-## Hi there 👋
+  <svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#0f2027"/>
+        <stop offset="50%" stop-color="#2c5364"/>
+        <stop offset="100%" stop-color="#1e3c72"/>
+      </linearGradient>
+    </defs>
 
-<!--
-**kilibick27/kilibick27** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+    <rect width="900" height="500" rx="24" fill="url(#bg)"/>
 
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+    <rect x="40"  y="40"  width="260" height="180" rx="20" fill="#a8d8ff" fill-opacity="0.9"/>
+    <rect x="320" y="40"  width="260" height="180" rx="20" fill="#a8d8ff" fill-opacity="0.9"/>
+    <rect x="600" y="40"  width="260" height="180" rx="20" fill="#a8d8ff" fill-opacity="0.9"/>
+    <rect x="40"  y="260" width="260" height="180" rx="20" fill="#a8d8ff" fill-opacity="0.9"/>
+    <rect x="320" y="260" width="260" height="180" rx="20" fill="#a8d8ff" fill-opacity="0.9"/>
+    <rect x="600" y="260" width="260" height="180" rx="20" fill="#a8d8ff" fill-opacity="0.9"/>
+  </svg>
