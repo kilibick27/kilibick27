@@ -190,7 +190,9 @@
     .row { flex-direction: column; gap: 2.5vh; max-width: 100%; }
     .row.top .block { flex: 0 0 auto; width: 100%; }
     .block { width: 100%; box-sizing: border-box; }
-    .ddnet-icon { width: clamp(140px, 55vw, 260px); height: auto; max-width: 100%; }
+    .ddnet-icon { width: clamp(140px, 55vw, 260px); height: clamp(48px, 19vw, 90px); max-width: 100%; object-fit: contain; }
+    .block { overflow: visible; }
+    .block-content { gap: 6px; }
     .welcome { white-space: normal; text-align: center; padding: 0 2vw; order: -1; }
     .profile-card { top: 2vh; left: 2vw; padding: 16px 22px; }
     .profile-avatar { width: 84px; height: 84px; }
