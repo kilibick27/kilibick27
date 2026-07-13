@@ -22,10 +22,28 @@
   .bg-effects {
     position: fixed;
     inset: 0;
-    width: 100%;
-    height: 100%;
     z-index: 0;
-    opacity: 0.35;
+    opacity: 0.4;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .bolt {
+    position: absolute;
+    top: 0;
+    width: clamp(16px, 1.8vw, 26px);
+    height: clamp(66px, 7.4vw, 108px);
+    animation-name: fall-full;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: backwards;
+  }
+
+  @keyframes fall-full {
+    0%   { transform: translateY(-8vh) rotate(var(--rot, 0deg)); opacity: 0; }
+    8%   { opacity: 1; }
+    92%  { opacity: 1; }
+    100% { transform: translateY(120vh) rotate(var(--rot, 0deg)); opacity: 0; }
   }
 
   .stage {
@@ -72,15 +90,20 @@
   }
 
   .ddnet-icon {
-    width: clamp(64px, 11vw, 110px);
+    width: clamp(192px, 33vw, 330px);
     height: clamp(64px, 11vw, 110px);
-    border-radius: 12px;
-    object-fit: cover;
+    object-fit: contain;
   }
 
   .claude-icon {
-    width: clamp(36px, 6vw, 56px);
-    height: clamp(36px, 6vw, 56px);
+    width: clamp(72px, 12vw, 112px);
+    height: clamp(72px, 12vw, 112px);
+  }
+
+  .github-icon {
+    width: clamp(72px, 12vw, 112px);
+    height: clamp(72px, 12vw, 112px);
+    filter: invert(1);
   }
 
   .block-label {
@@ -110,27 +133,6 @@
     image-rendering: pixelated;
   }
 
-  @keyframes fall {
-    0%   { transform: translateY(-120px); opacity: 0; }
-    10%  { opacity: 1; }
-    90%  { opacity: 1; }
-    100% { transform: translateY(1020px); opacity: 0; }
-  }
-
-  .fall {
-    animation: fall linear infinite;
-  }
-  .f1  { animation-duration: 9s;  animation-delay: 0s; }
-  .f2  { animation-duration: 12s; animation-delay: 2s; }
-  .f3  { animation-duration: 7s;  animation-delay: 4s; }
-  .f4  { animation-duration: 11s; animation-delay: 1s; }
-  .f5  { animation-duration: 8s;  animation-delay: 3s; }
-  .f6  { animation-duration: 10s; animation-delay: 0.5s; }
-  .f7  { animation-duration: 13s; animation-delay: 2.5s; }
-  .f8  { animation-duration: 9.5s; animation-delay: 5s; }
-  .f9  { animation-duration: 7.5s; animation-delay: 3.5s; }
-  .f10 { animation-duration: 11.5s; animation-delay: 1.5s; }
-
   .row.top .block {
     flex: 0 0 30%;
   }
@@ -146,46 +148,106 @@
 </head>
 <body>
 
-  <svg class="bg-effects" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
-    <g fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
-      <!-- молнии -->
-      <g class="fall f1"><path d="M180 60 L120 220 L165 220 L100 400" transform="rotate(10 150 230)"/></g>
-      <g class="fall f2"><path d="M1420 100 L1360 260 L1405 260 L1340 440" transform="rotate(-15 1380 270)"/></g>
-      <g class="fall f3"><path d="M60 620 L10 760 L50 760 L0 900" transform="rotate(8 30 760)"/></g>
-      <g class="fall f4"><path d="M1500 560 L1450 700 L1495 700 L1440 860" transform="rotate(-8 1470 710)"/></g>
-      <g class="fall f5"><path d="M780 40 L740 150 L775 150 L730 260" transform="rotate(12 755 150)"/></g>
-
-      <!-- треугольники -->
-      <g class="fall f6"><path d="M300 460 L270 520 L330 520 Z"/></g>
-      <g class="fall f7"><path d="M1210 180 L1180 240 L1240 240 Z"/></g>
-      <g class="fall f8"><path d="M145 100 L118 155 L172 155 Z"/></g>
-      <g class="fall f9"><path d="M1330 700 L1300 758 L1360 758 Z"/></g>
-      <g class="fall f10"><path d="M725 780 L698 834 L752 834 Z"/></g>
-    </g>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="boltGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#fff8c4"/>
+        <stop offset="45%" stop-color="#ffd400"/>
+        <stop offset="100%" stop-color="#b8860b"/>
+      </linearGradient>
+      <path id="bolt-shape" d="M12 0 L0 46 L8 46 L3 90 L22 38 L13 38 Z"/>
+    </defs>
   </svg>
+
+  <div class="bg-effects">
+    <svg class="bolt" viewBox="0 0 22 90" style="left:2%;  --rot:-8deg;  animation-duration:7.0s;  animation-delay:0s;">   <use href="#bolt-shape" fill="url(#boltGrad)" stroke="#8a6100" stroke-width="0.8" stroke-linejoin="round"/></svg>
+    <svg class="bolt" viewBox="0 0 22 90" style="left:8%;  --rot:9deg;   animation-duration:9.4s;  animation-delay:0.6s;"> <use href="#bolt-shape" fill="url(#boltGrad)" stroke="#8a6100" stroke-width="0.8" stroke-linejoin="round"/></svg>
+    <svg class="bolt" viewBox="0 0 22 90" style="left:14%; --rot:-11deg; animation-duration:6.6s;  animation-delay:1.2s;"> <use href="#bolt-shape" fill="url(#boltGrad)" stroke="#8a6100" stroke-width="0.8" stroke-linejoin="round"/></svg>
+    <svg class="bolt" viewBox="0 0 22 90" style="left:20%; --rot:6deg;   animation-duration:10.2s; animation-delay:0.3s;"> <use href="#bolt-shape" fill="url(#boltGrad)" stroke="#8a6100" stroke-width="0.8" stroke-linejoin="round"/></svg>
+    <svg class="bolt" viewBox="0 0 22 90" style="left:27%; --rot:-9deg;  animation-duration:8.1s;  animation-delay:2.0s;"> <use href="#bolt-shape" fill="url(#boltGrad)" stroke="#8a6100" stroke-width="0.8" stroke-linejoin="round"/></svg>
+    <svg class="bolt" viewBox="0 0 22 90" style="left:33%; --rot:11deg;  animation-duration:9.6s;  animation-delay:1.6s;"> <use href="#bolt-shape" fill="url(#boltGrad)" stroke="#8a6100" stroke-width="0.8" stroke-linejoin="round"/></svg>
+    <svg class="bolt" viewBox="0 0 22 90" style="left:39%; --rot:-6deg;  animation-duration:7.4s;  animation-delay:2.8s;"> <use href="#bolt-shape" fill="url(#boltGrad)" stroke="#8a6100" stroke-width="0.8" stroke-linejoin="round"/></svg>
+    <svg class="bolt" viewBox="0 0 22 90" style="left:45%; --rot:8deg;   animation-duration:10.8s; animation-delay:0.9s;"> <use href="#bolt-shape" fill="url(#boltGrad)" stroke="#8a6100" stroke-width="0.8" stroke-linejoin="round"/></svg>
+    <svg class="bolt" viewBox="0 0 22 90" style="left:50%; --rot:-10deg; animation-duration:8.8s;  animation-delay:3.4s;"> <use href="#bolt-shape" fill="url(#boltGrad)" stroke="#8a6100" stroke-width="0.8" stroke-linejoin="round"/></svg>
+    <svg class="bolt" viewBox="0 0 22 90" style="left:56%; --rot:12deg;  animation-duration:6.9s;  animation-delay:2.3s;"> <use href="#bolt-shape" fill="url(#boltGrad)" stroke="#8a6100" stroke-width="0.8" stroke-linejoin="round"/></svg>
+    <svg class="bolt" viewBox="0 0 22 90" style="left:62%; --rot:-7deg;  animation-duration:9.9s;  animation-delay:4.0s;"> <use href="#bolt-shape" fill="url(#boltGrad)" stroke="#8a6100" stroke-width="0.8" stroke-linejoin="round"/></svg>
+    <svg class="bolt" viewBox="0 0 22 90" style="left:68%; --rot:10deg;  animation-duration:7.7s;  animation-delay:1.0s;"> <use href="#bolt-shape" fill="url(#boltGrad)" stroke="#8a6100" stroke-width="0.8" stroke-linejoin="round"/></svg>
+    <svg class="bolt" viewBox="0 0 22 90" style="left:74%; --rot:-12deg; animation-duration:10.4s; animation-delay:3.8s;"> <use href="#bolt-shape" fill="url(#boltGrad)" stroke="#8a6100" stroke-width="0.8" stroke-linejoin="round"/></svg>
+    <svg class="bolt" viewBox="0 0 22 90" style="left:80%; --rot:5deg;   animation-duration:8.3s;  animation-delay:4.6s;"> <use href="#bolt-shape" fill="url(#boltGrad)" stroke="#8a6100" stroke-width="0.8" stroke-linejoin="round"/></svg>
+    <svg class="bolt" viewBox="0 0 22 90" style="left:85%; --rot:-9deg;  animation-duration:9.1s;  animation-delay:2.6s;"> <use href="#bolt-shape" fill="url(#boltGrad)" stroke="#8a6100" stroke-width="0.8" stroke-linejoin="round"/></svg>
+    <svg class="bolt" viewBox="0 0 22 90" style="left:90%; --rot:7deg;   animation-duration:6.8s;  animation-delay:5.2s;"> <use href="#bolt-shape" fill="url(#boltGrad)" stroke="#8a6100" stroke-width="0.8" stroke-linejoin="round"/></svg>
+    <svg class="bolt" viewBox="0 0 22 90" style="left:94%; --rot:-11deg; animation-duration:10.9s; animation-delay:3.0s;"> <use href="#bolt-shape" fill="url(#boltGrad)" stroke="#8a6100" stroke-width="0.8" stroke-linejoin="round"/></svg>
+    <svg class="bolt" viewBox="0 0 22 90" style="left:98%; --rot:9deg;   animation-duration:8.6s;  animation-delay:4.4s;"> <use href="#bolt-shape" fill="url(#boltGrad)" stroke="#8a6100" stroke-width="0.8" stroke-linejoin="round"/></svg>
+  </div>
 
   <div class="stage">
     <div class="row top">
       <div class="block b1">
         <div class="block-content">
-          <img class="ddnet-icon" src="https://avatars.mds.yandex.net/i?id=4f3dbcdae00b84bc1b7f14a5641ec3fc8f7c023c-5342121-images-thumbs&n=13" alt="DDNet">
+          <img class="ddnet-icon chroma-key" data-chroma="black" src="https://images.steamusercontent.com/ugc/47944499555036292/614ED66557CB2AFEB3EBF21CBCE353D354A8D07A/?imw=512&imh=512&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="DDNet" crossorigin="anonymous">
           <span class="block-label">DDKClient</span>
         </div>
       </div>
       <div class="welcome">Welcome</div>
-      <div class="block b2"></div>
+      <div class="block b2">
+        <div class="block-content">
+          <img class="github-icon" src="https://github.githubassets.com/favicons/favicon.svg" alt="GitHub">
+          <span class="block-label">GitHub</span>
+        </div>
+      </div>
     </div>
     <div class="row bottom">
       <div class="block b3"></div>
       <div class="block b4">
         <div class="block-content">
-          <img class="claude-icon" src="https://avatars.mds.yandex.net/i?id=4930292dd525cc048500d7eaa59c817b5eb7da0d-5660351-images-thumbs&n=13" alt="Claude">
+          <img class="claude-icon chroma-key" src="https://avatars.mds.yandex.net/i?id=4930292dd525cc048500d7eaa59c817b5eb7da0d-5660351-images-thumbs&n=13" alt="Claude" crossorigin="anonymous">
           <span class="block-label">VibeCoding</span>
         </div>
       </div>
       <div class="block b5"></div>
     </div>
   </div>
+
+  <script>
+    function chromaKey(img) {
+      var w = img.naturalWidth, h = img.naturalHeight;
+      if (!w || !h) return;
+      var mode = img.dataset.chroma || 'white';
+      var canvas = document.createElement('canvas');
+      canvas.width = w;
+      canvas.height = h;
+      var ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, w, h);
+      var frame;
+      try {
+        frame = ctx.getImageData(0, 0, w, h);
+      } catch (e) {
+        return;
+      }
+      var px = frame.data;
+      var threshold = 60;
+      for (var i = 0; i < px.length; i += 4) {
+        var r = px[i], g = px[i + 1], b = px[i + 2];
+        var isKeyed = mode === 'black'
+          ? (r < threshold && g < threshold && b < threshold)
+          : (r > 255 - threshold && g > 255 - threshold && b > 255 - threshold);
+        if (isKeyed) {
+          px[i + 3] = 0;
+        }
+      }
+      ctx.putImageData(frame, 0, 0);
+      canvas.className = img.className;
+      img.replaceWith(canvas);
+    }
+
+    document.querySelectorAll('img.chroma-key').forEach(function (img) {
+      if (img.complete && img.naturalWidth) {
+        chromaKey(img);
+      } else {
+        img.addEventListener('load', function () { chromaKey(img); });
+      }
+    });
+  </script>
 
 </body>
 </html>
