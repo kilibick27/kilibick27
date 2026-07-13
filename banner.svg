@@ -5,14 +5,18 @@
         <stop offset="50%" stop-color="#2c5364"/>
         <stop offset="100%" stop-color="#1e3c72"/>
       </linearGradient>
+      <linearGradient id="blockGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#000000"/>
+        <stop offset="100%" stop-color="#5b9bd5"/>
+      </linearGradient>
     </defs>
 
     <rect width="900" height="500" rx="24" fill="url(#bg)"/>
 
-    <rect x="40"  y="40"  width="260" height="180" rx="20" fill="#a8d8ff" fill-opacity="0.9"/>
-    <rect x="320" y="40"  width="260" height="180" rx="20" fill="#a8d8ff" fill-opacity="0.9"/>
-    <rect x="600" y="40"  width="260" height="180" rx="20" fill="#a8d8ff" fill-opacity="0.9"/>
-    <rect x="40"  y="260" width="260" height="180" rx="20" fill="#a8d8ff" fill-opacity="0.9"/>
-    <rect x="320" y="260" width="260" height="180" rx="20" fill="#a8d8ff" fill-opacity="0.9"/>
-    <rect x="600" y="260" width="260" height="180" rx="20" fill="#a8d8ff" fill-opacity="0.9"/>
+    <rect x="40"  y="40"  width="260" height="180" rx="20" fill="url(#blockGrad)"/>
+    <rect x="320" y="40"  width="260" height="180" rx="20" fill="url(#blockGrad)"/>
+    <rect x="600" y="40"  width="260" height="180" rx="20" fill="url(#blockGrad)"/>
+    <rect x="40"  y="260" width="260" height="180" rx="20" fill="url(#blockGrad)"/>
+    <rect x="320" y="260" width="260" height="180" rx="20" fill="url(#blockGrad)"/>
+    <rect x="600" y="260" width="260" height="180" rx="20" fill="url(#blockGrad)"/>
   </svg>
